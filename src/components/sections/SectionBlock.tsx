@@ -14,19 +14,9 @@ type SectionBlockProps = {
 };
 
 export function ThemedSection({ id, children, className = "" }: SectionBlockProps) {
-  const theme = sectionThemes[id];
-
   return (
     <Section id={id} theme={id} className={className}>
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute -left-20 top-20 h-64 w-64 rounded-full blur-3xl ${theme.blobPrimary}`}
-      />
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute -right-16 bottom-16 h-56 w-56 rounded-full blur-3xl ${theme.blobSecondary}`}
-      />
-      <div className="relative">{children}</div>
+      {children}
     </Section>
   );
 }
@@ -36,7 +26,7 @@ type SectionHeaderProps = {
   label: string;
   title: string;
   description?: string;
-  align?: "left" | "center";
+  align?: "left" | "center" | "split";
 };
 
 export function SectionHeader({
@@ -47,6 +37,29 @@ export function SectionHeader({
   align = "left",
 }: SectionHeaderProps) {
   const theme = sectionThemes[sectionId];
+
+  if (align === "split" && description) {
+    return (
+      <ScrollStagger className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <ScrollReveal>
+          <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${theme.label}`}>
+            {label}
+          </p>
+          <h2
+            className={`${theme.heading} mt-3 font-display text-4xl font-bold md:text-5xl`}
+          >
+            {title}
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className={`max-w-md text-base md:text-right md:text-lg ${theme.subheading}`}>
+            {description}
+          </p>
+        </ScrollReveal>
+      </ScrollStagger>
+    );
+  }
+
   const alignClass = align === "center" ? "mx-auto text-center" : "max-w-2xl";
 
   return (
@@ -58,14 +71,16 @@ export function SectionHeader({
       </ScrollReveal>
       <ScrollReveal>
         <h2
-          className={`${theme.heading} mt-3 font-display text-4xl font-semibold md:text-5xl`}
+          className={`${theme.heading} mt-3 font-display text-4xl font-bold md:text-5xl`}
         >
           {title}
         </h2>
       </ScrollReveal>
       {description && (
         <ScrollReveal>
-          <p className="mt-4 text-base text-slate-400 md:text-lg">{description}</p>
+          <p className={`mt-4 text-base md:text-lg ${theme.subheading}`}>
+            {description}
+          </p>
         </ScrollReveal>
       )}
     </ScrollStagger>

@@ -12,8 +12,10 @@ export default function AboutSection() {
         sectionId="about"
         label="About"
         title="Building with curiosity and care"
+        align="split"
+        description="I keep practicing, shipping small projects, and improving my craft one iteration at a time."
       />
-    <ScrollStagger className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-slate-300 md:text-lg">
+      <ScrollStagger className="mx-auto mt-12 max-w-3xl space-y-5 text-base leading-relaxed text-white/70 md:text-lg">
         <ScrollReveal>
           <p>
             I started my frontend journey with HTML and CSS, then moved into
@@ -32,9 +34,9 @@ export default function AboutSection() {
         </ScrollReveal>
         <ScrollReveal>
           <p>
-            I believe consistency matters more than perfection. I keep practicing,
-            shipping small projects, and improving my craft one iteration at a
-            time.
+            I believe consistency matters more than perfection. Every project is
+            a chance to write clearer code, design better interfaces, and grow as
+            a developer.
           </p>
         </ScrollReveal>
       </ScrollStagger>

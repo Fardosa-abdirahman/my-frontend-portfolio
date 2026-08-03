@@ -2,23 +2,27 @@ import type { NavLink } from "../types";
 
 export const sectionIds = [
   "home",
-  "profile",
   "about",
-  "projects",
   "skills",
+  "projects",
   "achievements",
 ] as const;
 
 export type SectionId = (typeof sectionIds)[number];
 
-export const navLinks: NavLink[] = [
+export const navLinksLeft: NavLink[] = [
   { name: "Home", href: "#home" },
-  { name: "Profile", href: "#profile" },
   { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
-  { name: "Achievements", href: "#achievements" },
 ];
+
+export const navLinksRight: NavLink[] = [
+  { name: "Resume", href: "/cv.pdf" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#achievements" },
+];
+
+export const navLinks: NavLink[] = [...navLinksLeft, ...navLinksRight];
 
 export function scrollToSection(id: SectionId | string) {
   const target = document.getElementById(id.replace(/^#/, ""));

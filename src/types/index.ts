@@ -1,11 +1,5 @@
 import type { ReactNode } from "react";
 
-export interface Certificate {
-  skill: string;
-  description: string;
-  link: string;
-}
-
 export interface Project {
   id: string;
   name: string;

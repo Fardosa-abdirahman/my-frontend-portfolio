@@ -26,9 +26,9 @@ export function Section({
   return (
     <section
       id={id}
-      className={`scroll-section relative flex min-h-screen scroll-mt-20 flex-col justify-center overflow-hidden px-6 py-24 md:py-28 ${themeClass} ${className}`}
+      className={`scroll-section relative flex min-h-screen scroll-mt-24 flex-col justify-center overflow-hidden px-6 py-24 md:py-28 ${themeClass} ${className}`}
     >
-      <div className="mx-auto w-full max-w-6xl">{children}</div>
+      <div className="relative mx-auto w-full max-w-6xl">{children}</div>
     </section>
   );
 }

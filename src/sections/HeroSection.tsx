@@ -1,94 +1,188 @@
+import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
-import { Section } from "../components/ui/PageMotion";
-import { sectionThemes } from "../lib/sectionThemes";
-import { ScrollReveal, ScrollStagger } from "../components/sections/SectionBlock";
+import { defaultTransition, easeOut } from "../lib/motion";
+
+function ArrowIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+    >
+      <path
+        d="M4 12L12 4M12 4H6M12 4V10"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function Stars() {
+  return (
+    <div className="flex gap-1" aria-label="5 out of 5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <motion.svg
+          key={i}
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="#ff6b00"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.55 + i * 0.08, duration: 0.35, ease: easeOut }}
+          aria-hidden
+        >
+          <path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z" />
+        </motion.svg>
+      ))}
+    </div>
+  );
+}
 
 export default function HeroSection() {
-  const theme = sectionThemes.home;
-
   return (
-    <Section id="home" theme="home" className="!py-0">
+    <section
+      id="home"
+      className="scroll-section relative min-h-screen overflow-hidden bg-paper pt-28 pb-16 md:pt-32 md:pb-20"
+    >
+      {/* Soft atmosphere */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-20 [background: radial-gradient(ellipse_at_center,rgba(59,130,246,0.15),transparent_70%)]"
-      />
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full blur-3xl ${theme.blobPrimary}`}
-      />
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute -right-20 bottom-32 h-64 w-64 rounded-full blur-3xl ${theme.blobSecondary}`}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_30%,rgba(255,107,0,0.08),transparent_65%)]"
       />
 
-      <div className="relative flex min-h-[calc(100vh-5rem)] flex-col justify-center">
-        <ScrollStagger>
-          <ScrollReveal>
-            <div className="mb-6 flex flex-wrap gap-2">
-              {/* {["React", "TypeScript", "Tailwind"].map((tag) => ( */}
-                {/* <span
-                  key={tag}
-                  className="rounded-full border border-ocean-500/20 bg-white/70 px-3 py-1 text-xs font-medium text-ocean-700 shadow-sm"
-                >
-                  {tag}
-                </span> */}
-              {/* ))} */}
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <p className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.label}`}>
-              Portfolio
-            </p>
-          </ScrollReveal>
-          <ScrollReveal>
-            <h1
-              className={`${theme.heading} mt-4 max-w-4xl font-display text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl`}
-            >
-              Hi, I&apos;m Fardosa
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal>
-            <p className={`mt-5 max-w-xl text-lg sm:text-xl ${theme.subheading}`}>
-              Aspiring Full-Stack Developer crafting clean, responsive web
-              experiences.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button
-                href="#projects"
-                variant="primary"
-                accentGradient={`${theme.buttonPrimary} shadow-ocean-700/20`}
-              >
-                View Projects
-              </Button>
-              <Button
-                href="#skills"
-                variant="outline"
-                className={theme.buttonOutline}
-              >
-                View Skills
-              </Button>
-            </div>
-          </ScrollReveal>
-        </ScrollStagger>
-
-        <ScrollReveal className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 md:block">
-          <button
-            type="button"
-            onClick={() =>
-              document
-                .getElementById("profile")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            aria-label="Scroll to profile section"
-            className="group flex flex-col items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-slate-400 transition-colors hover:text-violet-400"
+      <div className="relative mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl flex-col items-center px-6">
+        {/* Headline */}
+        <motion.div
+          className="relative z-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={defaultTransition}
+        >
+          {/* Hello bubble */}
+          <motion.span
+            className="animate-pop-in absolute -top-2 left-[42%] -translate-x-1/2 rounded-2xl rounded-br-sm bg-ink px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg md:left-[38%] md:-top-1"
+            initial={{ opacity: 0, scale: 0.8, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.45, ease: easeOut }}
           >
-            Scroll
-            <span className="brand-gradient-line block h-10 w-1 rounded-full transition-transform duration-300 group-hover:scale-y-110" />
-          </button>
-        </ScrollReveal>
+            Hello!
+            <span
+              aria-hidden
+              className="absolute -bottom-1 right-2 h-2 w-2 rotate-45 bg-ink"
+            />
+          </motion.span>
+
+          <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl">
+            I&apos;m{" "}
+            <span className="text-accent">Fardosa</span>
+            ,{" "}
+            <span className="block sm:inline">Full-Stack Developer.</span>
+          </h1>
+        </motion.div>
+
+        {/* Portrait composition */}
+        <div className="relative mt-6 flex w-full flex-1 flex-col items-center justify-end md:mt-4">
+          {/* Orange circle behind portrait */}
+          <motion.div
+            aria-hidden
+            className="hero-orange-orb absolute bottom-0 left-1/2 h-[min(72vw,420px)] w-[min(72vw,420px)] -translate-x-1/2 rounded-full md:h-[480px] md:w-[480px]"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15, duration: 0.7, ease: easeOut }}
+          />
+
+          {/* Left supporting copy */}
+          <motion.p
+            className="absolute left-0 top-[18%] z-20 hidden max-w-[200px] text-sm leading-relaxed text-muted lg:block"
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.45, duration: 0.55, ease: easeOut }}
+          >
+            Building clean, responsive web experiences with React, TypeScript,
+            and a focus on craft.
+          </motion.p>
+
+          {/* Right stats */}
+          <motion.div
+            className="absolute right-0 top-[18%] z-20 hidden text-right lg:block"
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.55, ease: easeOut }}
+          >
+            <Stars />
+            <p className="mt-2 font-display text-lg font-bold text-ink">
+              Always Learning
+            </p>
+            <p className="text-sm text-muted">Open to opportunities</p>
+          </motion.div>
+
+          {/* Portrait */}
+          <motion.div
+            className="relative z-10 animate-float-soft"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.7, ease: easeOut }}
+          >
+            <img
+              src="/images/my image.jpg"
+              alt="Fardosa"
+              className="relative z-10 h-[340px] w-auto object-cover object-top sm:h-[400px] md:h-[460px]"
+              style={{
+                maskImage:
+                  "linear-gradient(to bottom, black 78%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 78%, transparent 100%)",
+              }}
+            />
+          </motion.div>
+
+          {/* CTAs overlaid near bottom of portrait */}
+          <motion.div
+            className="absolute bottom-6 z-20 flex flex-wrap items-center justify-center gap-5 md:bottom-10"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.5, ease: easeOut }}
+          >
+            <Button href="#projects" variant="primary" className="group gap-2">
+              Portfolio
+              <ArrowIcon />
+            </Button>
+            <a
+              href="#achievements"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("achievements")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-sm font-semibold text-ink underline decoration-accent/40 underline-offset-4 transition hover:text-accent hover:decoration-accent"
+            >
+              Hire me
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Mobile supporting text */}
+        <div className="mt-8 flex w-full flex-col gap-4 text-center lg:hidden">
+          <p className="mx-auto max-w-sm text-sm leading-relaxed text-muted">
+            Building clean, responsive web experiences with React, TypeScript,
+            and a focus on craft.
+          </p>
+          <div className="flex flex-col items-center">
+            <Stars />
+            <p className="mt-2 font-display text-base font-bold text-ink">
+              Always Learning
+            </p>
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

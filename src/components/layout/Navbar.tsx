@@ -1,83 +1,167 @@
 import { useState } from "react";
 import type { SectionId } from "../../data/navigation";
-import { navLinks, scrollToSection, sectionIds } from "../../data/navigation";
+import {
+  navLinks,
+  navLinksLeft,
+  navLinksRight,
+  scrollToSection,
+  sectionIds,
+} from "../../data/navigation";
 import { useActiveSection } from "../../hooks/useActiveSection";
-import { sectionThemes } from "../../lib/sectionThemes";
 import { cn } from "../../utils/cn";
+
+function NavItem({
+  name,
+  href,
+  isActive,
+  onClick,
+}: {
+  name: string;
+  href: string;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  const isExternal = href.endsWith(".pdf") || href.startsWith("http");
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+          "text-white/75 hover:text-white"
+        )}
+      >
+        {name}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+        isActive
+          ? "bg-accent text-white shadow-md shadow-accent/30"
+          : "text-white/75 hover:text-white"
+      )}
+    >
+      {name}
+    </button>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const activeSection = useActiveSection(sectionIds);
 
   const handleNavClick = (href: string) => {
+    if (href.endsWith(".pdf") || href.startsWith("http")) return;
     scrollToSection(href);
     setOpen(false);
   };
 
-  const getLinkStyles = (id: SectionId, isActive: boolean) => {
-    const theme = sectionThemes[id];
-    return cn(
-      "rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300",
-      isActive
-        ? theme.navActive
-        : cn("text-slate-400 hover:bg-slate-800/60", theme.navHover)
-    );
-  };
-
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-700/80 bg-slate-950/90 backdrop-blur-lg">
-      <div className="color-bar" />
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <button
-          type="button"
-          onClick={() => handleNavClick("#home")}
-          className="bg-gradient-to-r from-ocean-400 via-violet-400 to-rose-400 bg-clip-text font-display text-xl font-semibold tracking-tight text-transparent transition-opacity hover:opacity-80"
-        >
-          Fardosa
-        </button>
-
-        <div className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => {
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 md:px-6">
+      <nav className="pointer-events-auto nav-pill mx-auto flex max-w-5xl items-center justify-between gap-2 rounded-full px-3 py-2.5 md:px-4">
+        {/* Left links */}
+        <div className="hidden flex-1 items-center justify-start gap-0.5 md:flex">
+          {navLinksLeft.map((link) => {
             const id = link.href.replace("#", "") as SectionId;
-            const isActive = activeSection === id;
-
             return (
-              <button
+              <NavItem
                 key={link.href}
-                type="button"
+                name={link.name}
+                href={link.href}
+                isActive={activeSection === id}
                 onClick={() => handleNavClick(link.href)}
-                className={getLinkStyles(id, isActive)}
-              >
-                {link.name}
-              </button>
+              />
             );
           })}
         </div>
 
+        {/* Brand */}
+        <button
+          type="button"
+          onClick={() => handleNavClick("#home")}
+          className="flex shrink-0 items-center gap-2 px-2"
+          aria-label="Go to home"
+        >
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
+            F
+          </span>
+          <span className="font-display text-base font-bold tracking-wide text-white">
+            FARDOSA
+          </span>
+        </button>
+
+        {/* Right links */}
+        <div className="hidden flex-1 items-center justify-end gap-0.5 md:flex">
+          {navLinksRight.map((link) => {
+            const id = link.href.replace("#", "") as SectionId;
+            const isHash = link.href.startsWith("#");
+            return (
+              <NavItem
+                key={link.href}
+                name={link.name}
+                href={link.href}
+                isActive={isHash && activeSection === id}
+                onClick={() => handleNavClick(link.href)}
+              />
+            );
+          })}
+        </div>
+
+        {/* Mobile toggle */}
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-lg border border-slate-600 bg-slate-800/80 px-3 py-2 text-sm text-mist-100 transition hover:border-violet-400 hover:text-violet-300 md:hidden"
+          className="rounded-full border border-white/15 px-3 py-1.5 text-sm text-white md:hidden"
         >
           {open ? "Close" : "Menu"}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-slate-700/80 bg-slate-950/95 px-6 py-4 md:hidden">
+        <div className="pointer-events-auto mx-auto mt-2 max-w-5xl rounded-3xl bg-ink/95 px-4 py-4 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const id = link.href.replace("#", "") as SectionId;
-              const isActive = activeSection === id;
+              const isExternal =
+                link.href.endsWith(".pdf") || link.href.startsWith("http");
+              const isActive =
+                link.href.startsWith("#") && activeSection === id;
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full px-4 py-2.5 text-left text-sm font-medium text-white/80"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                );
+              }
 
               return (
                 <button
                   key={link.href}
                   type="button"
                   onClick={() => handleNavClick(link.href)}
-                  className={cn(getLinkStyles(id, isActive), "text-left")}
+                  className={cn(
+                    "rounded-full px-4 py-2.5 text-left text-sm font-medium transition-colors",
+                    isActive ? "bg-accent text-white" : "text-white/80"
+                  )}
                 >
                   {link.name}
                 </button>

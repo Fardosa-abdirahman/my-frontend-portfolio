@@ -4,70 +4,32 @@
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
 
-  --color-mist-50: #f8fafc;
-  --color-mist-100: #eef2f6;
-  --color-mist-200: #e2e8f0;
+  --color-ink: #111111;
+  --color-ink-soft: #1a1a1a;
+  --color-ink-muted: #2a2a2a;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f7f7f5;
+  --color-muted: #6b6b6b;
+  --color-muted-light: #9a9a9a;
 
-  --color-slate-ink: #0f172a;
-  --color-slate-muted: #64748b;
-
-  --color-ocean-200: #a8d4f5;
-  --color-ocean-400: #3d94d4;
-  --color-ocean-500: #1a6ba8;
-  --color-ocean-600: #155a8f;
-  --color-ocean-700: #114a76;
-  --color-ocean-800: #0d3a5c;
-
-  --color-violet-400: #a78bfa;
-  --color-violet-500: #8b5cf6;
-  --color-violet-600: #7c3aed;
-  --color-violet-700: #6d28d9;
-
-  --color-coral-400: #fb923c;
-  --color-coral-500: #f97316;
-  --color-coral-600: #ea580c;
-  --color-coral-700: #c2410c;
-
-  --color-emerald-400: #34d399;
-  --color-emerald-500: #10b981;
-  --color-emerald-600: #059669;
-  --color-emerald-700: #047857;
-
-  --color-amber-400: #fbbf24;
-  --color-amber-500: #f59e0b;
-  --color-amber-600: #d97706;
-  --color-amber-700: #b45309;
-
-  --color-rose-400: #fb7185;
-  --color-rose-500: #f43f5e;
-  --color-rose-600: #e11d48;
-  --color-rose-700: #be123c;
-
-  --color-teal-400: #2dd4bf;
-  --color-teal-500: #14b8a6;
-  --color-teal-600: #0d9488;
-
-  --color-indigo-400: #818cf8;
-  --color-indigo-500: #6366f1;
-  --color-indigo-600: #4f46e5;
-
-  --color-fuchsia-500: #d946ef;
-  --color-cyan-500: #06b6d4;
-  --color-orange-500: #f97316;
+  --color-accent: #ff6b00;
+  --color-accent-hover: #e85f00;
+  --color-accent-soft: #fff0e5;
+  --color-accent-glow: #ff8a33;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
     margin: 0;
     min-width: 320px;
     font-family: var(--font-sans);
-    background-color: #0b1120;
-    color: var(--color-mist-50);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -76,8 +38,8 @@
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-violet-500) 40%, #1e293b);
-    color: var(--color-mist-50);
+    background-color: color-mix(in srgb, var(--color-accent) 35%, white);
+    color: var(--color-ink);
   }
 }
 
@@ -87,141 +49,92 @@
   }
 
   .page-surface {
-    background: linear-gradient(
-      180deg,
-      #0b1120 0%,
-      #0f172a 15%,
-      #13162b 30%,
-      #14122e 50%,
-      #13122b 70%,
-      #0e1628 85%,
-      #0b1120 100%
+    background: var(--color-paper);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(17, 17, 17, 0.06);
+  }
+
+  .section-dark {
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 10%, rgba(255, 107, 0, 0.12), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(255, 107, 0, 0.08), transparent 50%),
+      #111111;
+  }
+
+  .section-dark-texture {
+    background-image:
+      radial-gradient(ellipse 60% 50% at 20% 10%, rgba(255, 107, 0, 0.12), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(255, 107, 0, 0.08), transparent 50%),
+      repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 40px,
+        rgba(255, 255, 255, 0.015) 40px,
+        rgba(255, 255, 255, 0.015) 41px
+      ),
+      #111111;
+  }
+
+  .hero-orange-orb {
+    background: radial-gradient(
+      circle at 50% 40%,
+      var(--color-accent-glow) 0%,
+      var(--color-accent) 55%,
+      #e05500 100%
     );
   }
 
-  .surface-card {
-    border: 1px solid color-mix(in srgb, var(--color-slate-ink) 70%, var(--color-violet-700));
-    background: color-mix(in srgb, #1e293b 90%, var(--color-slate-ink));
-    box-shadow:
-      0 1px 2px color-mix(in srgb, #000 20%, transparent),
-      0 8px 24px color-mix(in srgb, #000 40%, transparent);
-  }
-
-  .heading-gradient-ocean {
-    background: linear-gradient(135deg, #e2e8f0 0%, #3d94d4 45%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .heading-gradient-violet {
-    background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 50%, #fb7185 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .heading-gradient-coral {
-    background: linear-gradient(135deg, #e2e8f0 0%, #fb923c 50%, #fbbf24 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .heading-gradient-emerald {
-    background: linear-gradient(135deg, #e2e8f0 0%, #34d399 50%, #2dd4bf 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .heading-gradient-amber {
-    background: linear-gradient(135deg, #e2e8f0 0%, #fbbf24 50%, #fb923c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .heading-gradient-rose {
-    background: linear-gradient(135deg, #e2e8f0 0%, #fb7185 50%, #818cf8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .section-bg-home {
-    background:
-      radial-gradient(ellipse 70% 50% at 90% 10%, rgba(26, 107, 168, 0.18), transparent 55%),
-      radial-gradient(ellipse 50% 40% at 10% 90%, rgba(139, 92, 246, 0.15), transparent 50%);
-  }
-
-  .section-bg-profile {
-    background:
-      radial-gradient(ellipse 60% 45% at 85% 20%, rgba(139, 92, 246, 0.18), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 5% 80%, rgba(244, 63, 94, 0.14), transparent 50%),
-      linear-gradient(180deg, rgba(30, 27, 75, 0.5) 0%, transparent 100%);
-  }
-
-  .section-bg-about {
-    background:
-      radial-gradient(ellipse 65% 45% at 15% 15%, rgba(249, 115, 22, 0.16), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 90% 85%, rgba(245, 158, 11, 0.16), transparent 50%),
-      linear-gradient(180deg, rgba(60, 30, 15, 0.4) 0%, transparent 100%);
-  }
-
-  .section-bg-projects {
-    background:
-      radial-gradient(ellipse 60% 45% at 80% 15%, rgba(16, 185, 129, 0.16), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 10% 85%, rgba(20, 184, 166, 0.14), transparent 50%),
-      linear-gradient(180deg, rgba(15, 45, 35, 0.5) 0%, transparent 100%);
-  }
-
-  .section-bg-skills {
-    background:
-      radial-gradient(ellipse 60% 45% at 20% 20%, rgba(245, 158, 11, 0.16), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 85% 80%, rgba(249, 115, 22, 0.14), transparent 50%),
-      linear-gradient(180deg, rgba(50, 35, 10, 0.4) 0%, transparent 100%);
-  }
-
-  .section-bg-achievements {
-    background:
-      radial-gradient(ellipse 60% 45% at 75% 20%, rgba(244, 63, 94, 0.16), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 15% 80%, rgba(99, 102, 241, 0.15), transparent 50%),
-      linear-gradient(180deg, rgba(45, 20, 40, 0.5) 0%, transparent 100%);
+  .nav-pill {
+    background: rgba(17, 17, 17, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
   }
 
   .scroll-section {
     scroll-snap-align: start;
-  }
-
-  .color-bar {
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      #114a76,
-      #0d9488,
-      #0891b2,
-      #6366f1,
-      #9333ea,
-      #db2777
-    );
-  }
-
-  .brand-gradient-text {
-    background: linear-gradient(135deg, #155a8f 0%, #0d9488 35%, #6366f1 70%, #db2777 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .brand-gradient-line {
-    background: linear-gradient(180deg, #155a8f 0%, #0d9488 40%, #6366f1 75%, #db2777 100%);
   }
 }
 
 @media (min-width: 768px) {
   html {
     scroll-snap-type: y proximity;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -234,4 +147,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.animate-float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

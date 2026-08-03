@@ -4,45 +4,49 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-slate-ink via-indigo-950 to-violet-950 text-mist-50">
-      <div className="color-bar opacity-80" />
+    <footer className="bg-ink text-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="brand-gradient-text font-display text-lg font-semibold">
-            Fardosa
-          </p>
-          <p className="mt-1 text-sm text-mist-300/75">
-            Aspiring Full-Stack Developer
-          </p>
+        <div className="flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-bold">
+            F
+          </span>
+          <div>
+            <p className="font-display text-lg font-bold tracking-wide">
+              FARDOSA
+            </p>
+            <p className="text-sm text-white/55">
+              Aspiring Full-Stack Developer
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-4 text-sm">
+        <div className="flex flex-wrap gap-5 text-sm">
           <button
             type="button"
             onClick={() => scrollToSection("projects")}
-            className="text-emerald-200/90 transition hover:text-emerald-100"
+            className="text-white/65 transition hover:text-accent"
           >
             Projects
           </button>
           <button
             type="button"
             onClick={() => scrollToSection("skills")}
-            className="text-amber-200/90 transition hover:text-amber-100"
+            className="text-white/65 transition hover:text-accent"
           >
             Skills
           </button>
           <a
-            href="https://github.com/"
+            href="https://github.com/Fardosa-abdirahman"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-violet-200/90 transition hover:text-violet-100"
+            className="text-white/65 transition hover:text-accent"
           >
             GitHub
           </a>
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-6 py-4 text-center text-xs text-mist-100/55">
+      <div className="border-t border-white/10 px-6 py-4 text-center text-xs text-white/40">
         © {year} Fardosa. Built with React & Tailwind CSS.
       </div>
     </footer>

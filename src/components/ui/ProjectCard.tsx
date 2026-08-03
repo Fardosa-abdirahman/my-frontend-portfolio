@@ -1,5 +1,4 @@
 import type { Project } from "../../types";
-import { getCardAccent } from "../../lib/sectionThemes";
 import { cn } from "../../utils/cn";
 import Button from "./Button";
 
@@ -8,19 +7,17 @@ interface ProjectCardProps {
   index?: number;
 }
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const { name, description, stack, image, liveUrl, githubUrl } = project;
-  const accent = getCardAccent(index);
 
   return (
     <article
       className={cn(
-        "group surface-card h-full overflow-hidden rounded-xl border-t-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl",
-        accent.border,
-        accent.hover
+        "group glass-card-light h-full overflow-hidden rounded-[28px] transition-all duration-300",
+        "hover:-translate-y-1.5 hover:shadow-xl"
       )}
     >
-      <div className="aspect-[16/10] overflow-hidden bg-slate-800">
+      <div className="aspect-[16/10] overflow-hidden bg-paper-soft">
         <img
           src={image}
           alt={name}
@@ -30,29 +27,19 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </div>
       <div className="space-y-4 p-6">
         <div>
-          <h3
-            className={cn(
-              "font-display text-xl font-semibold text-mist-50 transition-colors duration-300",
-              accent.titleHover
-            )}
-          >
+          <h3 className="font-display text-xl font-bold text-ink transition-colors duration-300 group-hover:text-accent">
             {name}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-400">
+          <p className="mt-2 text-sm leading-relaxed text-muted">
             {description}
           </p>
         </div>
-        <p className={cn("text-xs font-medium tracking-wide", accent.text)}>
+        <p className="text-xs font-semibold tracking-wide text-accent">
           {stack.join(" · ")}
         </p>
         <div className="flex flex-wrap gap-3">
           {liveUrl && (
-            <Button
-              href={liveUrl}
-              variant="primary"
-              accentGradient="from-emerald-600 via-teal-500 to-cyan-500 shadow-emerald-700/20 hover:from-emerald-700 hover:via-teal-600 hover:to-cyan-600"
-              className="px-4 py-2"
-            >
+            <Button href={liveUrl} variant="primary" className="px-5 py-2.5">
               Live Demo
             </Button>
           )}
@@ -61,7 +48,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               href={githubUrl}
               external
               variant="outline"
-              className="px-4 py-2 hover:border-violet-400 hover:text-violet-300"
+              className="px-5 py-2.5"
             >
               GitHub
             </Button>

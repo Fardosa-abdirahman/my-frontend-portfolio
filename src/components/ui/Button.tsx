@@ -5,15 +5,12 @@ import { cn } from "../../utils/cn";
 
 const variants = {
   primary:
-    "bg-gradient-to-r text-white shadow-md hover:shadow-lg hover:-translate-y-0.5",
+    "bg-accent text-white shadow-lg shadow-accent/25 hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/30",
   secondary:
-    "bg-gradient-to-r from-slate-ink via-indigo-700 to-violet-700 text-white shadow-md shadow-slate-ink/15 hover:shadow-lg hover:-translate-y-0.5",
+    "bg-ink text-white shadow-md hover:bg-ink-soft hover:-translate-y-0.5",
   outline:
-    "border border-slate-600 bg-slate-800/40 text-mist-200 shadow-sm hover:bg-slate-700/60 hover:-translate-y-0.5",
+    "border border-ink/15 bg-transparent text-ink hover:border-accent hover:text-accent hover:-translate-y-0.5",
 };
-
-const defaultPrimaryGradient =
-  "from-ocean-600 via-teal-500 to-violet-500 shadow-ocean-700/20 hover:from-ocean-700 hover:via-teal-600 hover:to-violet-600 hover:shadow-ocean-700/25";
 
 export default function Button({
   children,
@@ -21,17 +18,13 @@ export default function Button({
   variant = "primary",
   external = false,
   className = "",
-  accentGradient,
+  accentGradient: _accentGradient,
   onClick,
   type = "button",
 }: ButtonProps) {
-  const primaryGradient = accentGradient ?? defaultPrimaryGradient;
-
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-out",
-    variant === "primary" && `${variants.primary} ${primaryGradient}`,
-    variant === "secondary" && variants.secondary,
-    variant === "outline" && variants.outline,
+    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-out",
+    variants[variant],
     className
   );
 

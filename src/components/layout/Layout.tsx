@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 export default function Layout() {
   return (
-    <div className="page-surface flex min-h-screen flex-col text-mist-50">
+    <div className="page-surface flex min-h-screen flex-col text-ink">
       <Navbar />
       <main className="flex-1">
         <Outlet />
