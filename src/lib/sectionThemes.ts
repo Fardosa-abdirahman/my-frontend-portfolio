@@ -32,9 +32,7 @@ export const sectionThemes: Record<SectionId, SectionTheme> = {
   home: { ...orangeTheme, sectionBg: "bg-paper" },
   about: {
     ...orangeTheme,
-    heading: "text-white",
-    subheading: "text-muted-light",
-    sectionBg: "section-dark",
+    sectionBg: "bg-paper-soft",
   },
   skills: {
     ...orangeTheme,

@@ -60,30 +60,39 @@ export default function HeroSection() {
       <div className="relative mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl flex-col items-center px-6">
         {/* Headline */}
         <motion.div
-          className="relative z-20 text-center"
+          className="relative z-20 flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={defaultTransition}
         >
-          {/* Hello bubble */}
+          {/* Hello */}
           <motion.span
-            className="animate-pop-in absolute -top-2 left-[42%] -translate-x-1/2 rounded-2xl rounded-br-sm bg-ink px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg md:left-[38%] md:-top-1"
-            initial={{ opacity: 0, scale: 0.8, y: 8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.45, ease: easeOut }}
+            className="mb-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-accent md:mb-5 md:text-xs"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.45, ease: easeOut }}
           >
-            Hello!
-            <span
-              aria-hidden
-              className="absolute -bottom-1 right-2 h-2 w-2 rotate-45 bg-ink"
-            />
+            Hello
           </motion.span>
 
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl">
-            I&apos;m{" "}
-            <span className="text-accent">Fardosa</span>
-            ,{" "}
-            <span className="block sm:inline">Full-Stack Developer.</span>
+          <h1 className="flex flex-col items-center gap-2 sm:gap-3">
+            <motion.span
+              className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.55, ease: easeOut }}
+            >
+              I&apos;m <span className="text-accent">Fardosa</span>
+            </motion.span>
+
+            <motion.span
+              className="font-display text-xl font-semibold tracking-wide text-ink/55 sm:text-2xl md:text-3xl lg:text-4xl"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.55, ease: easeOut }}
+            >
+              Full-Stack Developer
+            </motion.span>
           </h1>
         </motion.div>
 

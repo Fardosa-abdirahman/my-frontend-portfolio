@@ -9,7 +9,10 @@ import { skills } from "../data/skills";
 
 export default function SkillsSection() {
   return (
-    <ThemedSection id="skills">
+    <ThemedSection
+      id="skills"
+      className="!min-h-0 justify-start py-16 md:py-20"
+    >
       <SectionHeader
         sectionId="skills"
         label="Skills"
@@ -18,10 +21,10 @@ export default function SkillsSection() {
         align="split"
       />
 
-      <ScrollStagger className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {skills.map((skill, index) => (
+      <ScrollStagger className="mt-10 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {skills.map((skill) => (
           <ScrollReveal key={skill.name}>
-            <SkillCard skill={skill} index={index} />
+            <SkillCard skill={skill} />
           </ScrollReveal>
         ))}
       </ScrollStagger>
