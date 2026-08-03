@@ -14,11 +14,11 @@ export type SectionTheme = {
   buttonOutline: string;
 };
 
-const orangeTheme: SectionTheme = {
+const lightTheme: SectionTheme = {
   label: "text-accent",
   subheading: "text-muted",
   heading: "text-ink",
-  sectionBg: "",
+  sectionBg: "section-light",
   blobPrimary: "bg-accent/20",
   blobSecondary: "bg-accent-glow/15",
   navActive: "bg-accent text-white",
@@ -28,28 +28,19 @@ const orangeTheme: SectionTheme = {
   buttonOutline: "hover:border-accent hover:text-accent",
 };
 
+const darkTheme: SectionTheme = {
+  ...lightTheme,
+  heading: "text-white",
+  subheading: "text-muted-light",
+  sectionBg: "section-dark",
+};
+
 export const sectionThemes: Record<SectionId, SectionTheme> = {
-  home: { ...orangeTheme, sectionBg: "bg-paper" },
-  about: {
-    ...orangeTheme,
-    sectionBg: "bg-paper-soft",
-  },
-  skills: {
-    ...orangeTheme,
-    heading: "text-white",
-    subheading: "text-muted-light",
-    sectionBg: "section-dark-texture",
-  },
-  projects: {
-    ...orangeTheme,
-    sectionBg: "bg-paper-soft",
-  },
-  achievements: {
-    ...orangeTheme,
-    heading: "text-white",
-    subheading: "text-muted-light",
-    sectionBg: "section-dark",
-  },
+  home: { ...lightTheme, sectionBg: "section-light" },
+  about: { ...lightTheme, sectionBg: "section-light-soft" },
+  skills: { ...darkTheme, sectionBg: "section-dark" },
+  projects: { ...lightTheme, sectionBg: "section-light" },
+  achievements: { ...darkTheme, sectionBg: "section-dark" },
 };
 
 export const cardAccents = [

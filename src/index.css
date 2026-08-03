@@ -61,18 +61,33 @@
   }
 
   .glass-card-light {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.85);
     border: 1px solid rgba(17, 17, 17, 0.06);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 12px 40px rgba(17, 17, 17, 0.06);
   }
 
+  /* Shared light surfaces — soft orange atmosphere */
+  .section-light {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(255, 107, 0, 0.08), transparent 65%),
+      var(--color-paper);
+  }
+
+  .section-light-soft {
+    background:
+      radial-gradient(ellipse 55% 45% at 85% 15%, rgba(255, 107, 0, 0.07), transparent 55%),
+      radial-gradient(ellipse 45% 40% at 10% 85%, rgba(255, 107, 0, 0.05), transparent 50%),
+      var(--color-paper-soft);
+  }
+
+  /* Shared dark surfaces — same ink + accent glow */
   .section-dark {
     background:
       radial-gradient(ellipse 60% 50% at 20% 10%, rgba(255, 107, 0, 0.12), transparent 55%),
       radial-gradient(ellipse 50% 40% at 90% 80%, rgba(255, 107, 0, 0.08), transparent 50%),
-      #111111;
+      var(--color-ink);
   }
 
   .section-dark-texture {
@@ -86,7 +101,7 @@
         rgba(255, 255, 255, 0.015) 40px,
         rgba(255, 255, 255, 0.015) 41px
       ),
-      #111111;
+      var(--color-ink);
   }
 
   .hero-orange-orb {

@@ -49,14 +49,8 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="scroll-section relative min-h-screen overflow-hidden bg-paper pt-28 pb-16 md:pt-32 md:pb-20"
+      className="scroll-section section-light relative min-h-screen overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20"
     >
-      {/* Soft atmosphere */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_30%,rgba(255,107,0,0.08),transparent_65%)]"
-      />
-
       <div className="relative mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl flex-col items-center px-6">
         {/* Headline */}
         <motion.div
