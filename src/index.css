@@ -28,7 +28,7 @@
     margin: 0;
     min-width: 320px;
     font-family: var(--font-sans);
-    background-color: var(--color-paper);
+    background-color: var(--color-paper-soft);
     color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
   }
