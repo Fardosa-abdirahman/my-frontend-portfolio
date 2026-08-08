@@ -5,11 +5,11 @@ import { cn } from "../../utils/cn";
 
 const variants = {
   primary:
-    "bg-accent text-white shadow-lg shadow-accent/25 hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/30",
+    "bg-gradient-to-r from-accent to-accent-blue text-white shadow-lg shadow-accent/30 hover:from-accent-hover hover:to-accent-blue hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/40",
   secondary:
-    "bg-ink text-white shadow-md hover:bg-ink-soft hover:-translate-y-0.5",
+    "bg-ink-muted text-white shadow-md hover:bg-ink-soft hover:-translate-y-0.5",
   outline:
-    "border border-ink/15 bg-transparent text-ink hover:border-accent hover:text-accent hover:-translate-y-0.5",
+    "border border-white/20 bg-white/[0.03] text-white hover:border-accent hover:text-accent-glow hover:-translate-y-0.5",
 };
 
 export default function Button({

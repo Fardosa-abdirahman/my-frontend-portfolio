@@ -14,32 +14,31 @@ export type SectionTheme = {
   buttonOutline: string;
 };
 
-const lightTheme: SectionTheme = {
-  label: "text-accent",
+const darkTheme: SectionTheme = {
+  label: "text-gradient",
   subheading: "text-muted",
-  heading: "text-ink",
-  sectionBg: "section-light",
+  heading: "text-white",
+  sectionBg: "section-dark",
   blobPrimary: "bg-accent/20",
-  blobSecondary: "bg-accent-glow/15",
-  navActive: "bg-accent text-white",
-  navHover: "hover:text-accent",
+  blobSecondary: "bg-accent-blue/15",
+  navActive: "bg-gradient-to-r from-accent to-accent-blue text-white",
+  navHover: "hover:text-white",
   cardHover: "hover:border-accent/40",
-  buttonPrimary: "bg-accent hover:bg-accent-hover",
+  buttonPrimary:
+    "bg-gradient-to-r from-accent to-accent-blue hover:from-accent-hover hover:to-accent-blue",
   buttonOutline: "hover:border-accent hover:text-accent",
 };
 
-const darkTheme: SectionTheme = {
-  ...lightTheme,
-  heading: "text-white",
-  subheading: "text-muted-light",
-  sectionBg: "section-dark",
+const darkSoftTheme: SectionTheme = {
+  ...darkTheme,
+  sectionBg: "section-dark-soft",
 };
 
 export const sectionThemes: Record<SectionId, SectionTheme> = {
-  home: { ...lightTheme, sectionBg: "section-light" },
-  about: { ...lightTheme, sectionBg: "section-light-soft" },
+  home: { ...darkTheme, sectionBg: "section-dark" },
+  about: { ...darkSoftTheme, sectionBg: "section-dark-soft" },
   skills: { ...darkTheme, sectionBg: "section-dark" },
-  projects: { ...lightTheme, sectionBg: "section-light" },
+  projects: { ...darkSoftTheme, sectionBg: "section-dark-soft" },
   achievements: { ...darkTheme, sectionBg: "section-dark" },
 };
 

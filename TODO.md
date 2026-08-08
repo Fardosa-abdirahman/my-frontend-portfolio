@@ -1,17 +1,17 @@
-# Hero Section Improvement — Task Tracking
+# Dark Gradient & Modern Portfolio — Task Tracking
 
 ## Goal
-Rebuild the hero section as a modern, professional, hiring-ready homepage.
+Redesign the portfolio to match the Dribbble "Full Stack Developer Portfolio – Dark Gradient & Modern" style: a fully dark theme with a purple → blue → cyan gradient accent, glassmorphism cards, gradient text, and glowing orbs.
 
 ## Steps
-- [x] 1. Analyze current hero section and design system
-- [x] 2. Confirm plan with user
-- [x] 3. Rewrite `src/sections/HeroSection.tsx` with two-column layout + updated text
-- [x] 4. Verify build/typecheck passes
-
-## Feedback Revisions
-- [x] Circular profile image in square `overflow-hidden` container with `object-cover`
-- [x] Image centered in the circle (`object-center`)
-- [x] Whole-page warm hiring-ready background (React + Tailwind)
-- [x] Final upgrade: dark theme, new headline, two buttons, social links, glow effect, spacing, hover animations, responsive
-
+- [x] 1. Update `src/index.css` — dark gradient theme system, gradient utilities, updated animations
+- [x] 2. Update `index.html` — modern fonts + title
+- [x] 3. Update `src/lib/sectionThemes.ts` — all sections dark/gradient
+- [x] 4. Rebuild `src/sections/HeroSection.tsx` — gradient orbs, gradient-ring profile, gradient accents, stat chips
+- [x] 5. Restyle `src/components/ui/SkillCard.tsx` for dark gradient
+- [x] 6. Restyle `src/components/ui/ProjectCard.tsx` for dark gradient
+- [x] 7. Update `src/components/layout/Navbar.tsx` for gradient theme
+- [x] 8. Update `src/components/layout/Footer.tsx` for gradient theme
+- [x] 9. Restyle `src/sections/AboutSection.tsx` for dark gradient
+- [x] 10. Restyle `src/sections/AchievementsSection.tsx` for dark gradient
+- [x] 11. Verify build/typecheck passes

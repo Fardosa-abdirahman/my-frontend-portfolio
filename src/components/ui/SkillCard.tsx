@@ -7,7 +7,7 @@ interface SkillCardProps {
 export default function SkillCard({ skill }: SkillCardProps) {
   return (
     <article
-      className="group relative flex h-full flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-white/25 sm:p-5"
+      className="group relative flex h-full flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-accent/40 sm:p-5"
       style={{ ["--skill-color" as string]: skill.color }}
     >
       {/* hover glow ring */}
@@ -62,14 +62,14 @@ export default function SkillCard({ skill }: SkillCardProps) {
       <h3 className="mt-3 font-display text-sm font-bold text-white transition-colors duration-300 group-hover:text-[var(--skill-color)] sm:text-base">
         {skill.name}
       </h3>
-      <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-light">
+      <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted">
         {skill.description}
       </p>
 
       {/* level indicator */}
       <div className="mt-auto w-full pt-4">
         <div className="mb-1.5 flex items-center justify-between text-[11px] font-medium">
-          <span className="uppercase tracking-wider text-muted-light">
+          <span className="uppercase tracking-wider text-muted">
             Proficiency
           </span>
           <span

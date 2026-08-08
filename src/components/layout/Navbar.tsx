@@ -45,8 +45,8 @@ function NavItem({
       onClick={onClick}
       className={cn(
         "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
-        isActive
-          ? "bg-accent text-white shadow-md shadow-accent/30"
+isActive
+          ? "bg-gradient-to-r from-accent to-accent-blue text-white shadow-md shadow-accent/30"
           : "text-white/75 hover:text-white"
       )}
     >
@@ -91,7 +91,7 @@ export default function Navbar() {
           className="flex shrink-0 items-center gap-2 px-2"
           aria-label="Go to home"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
+<span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-blue text-sm font-bold text-white">
             F
           </span>
           <span className="font-display text-base font-bold tracking-wide text-white">
@@ -160,7 +160,9 @@ export default function Navbar() {
                   onClick={() => handleNavClick(link.href)}
                   className={cn(
                     "rounded-full px-4 py-2.5 text-left text-sm font-medium transition-colors",
-                    isActive ? "bg-accent text-white" : "text-white/80"
+isActive
+                      ? "bg-gradient-to-r from-accent to-accent-blue text-white"
+                      : "text-white/80"
                   )}
                 >
                   {link.name}

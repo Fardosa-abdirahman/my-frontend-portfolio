@@ -59,17 +59,17 @@ export default function AboutSection() {
               className="group flex h-full min-h-[220px] flex-col rounded-2xl border-2 p-6 transition-all duration-300 hover:-translate-y-1 sm:min-h-[240px] sm:p-7"
               style={{
                 ["--box-color" as string]: box.color,
-                borderColor: "var(--box-color)",
+                borderColor: "color-mix(in srgb, var(--box-color) 55%, white)",
                 backgroundColor:
-                  "color-mix(in srgb, var(--box-color) 10%, white)",
+                  "color-mix(in srgb, var(--box-color) 10%, #13131f)",
               }}
             >
               <div
                 className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border-2 transition-transform duration-300 group-hover:scale-105"
                 style={{
-                  borderColor: "var(--box-color)",
+                  borderColor: "color-mix(in srgb, var(--box-color) 60%, white)",
                   backgroundColor:
-                    "color-mix(in srgb, var(--box-color) 18%, white)",
+                    "color-mix(in srgb, var(--box-color) 18%, transparent)",
                   color: "var(--box-color)",
                 }}
               >
@@ -79,12 +79,12 @@ export default function AboutSection() {
               </div>
 
               <h3
-                className="font-display text-lg font-bold text-ink transition-colors duration-300 group-hover:text-[var(--box-color)]"
+                className="font-display text-lg font-bold text-white transition-colors duration-300 group-hover:text-[var(--box-color)]"
               >
                 {box.label}
               </h3>
 
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/65 sm:text-[15px]">
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-[15px]">
                 {box.text}
               </p>
             </article>

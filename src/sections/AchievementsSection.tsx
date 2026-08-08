@@ -39,7 +39,7 @@ export default function AchievementsSection() {
               href="https://github.com/Fardosa-abdirahman"
               external
               variant="outline"
-              className="border-white/20 bg-white/5 text-white hover:border-accent hover:bg-accent hover:text-white"
+className="border-white/20 bg-white/5 text-white hover:border-accent hover:text-accent-glow hover:bg-accent"
             >
               GitHub
             </Button>

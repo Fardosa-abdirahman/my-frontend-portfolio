@@ -79,6 +79,14 @@ export const skills: Skill[] = [
     level: 80,
   },
   {
+    name: "Linux",
+    description:
+      "Command-line workflows, shell scripting, and everyday development on Linux.",
+    logo: "/images/skills/linux.svg",
+    color: "#FCC624",
+    level: 75,
+  },
+  {
     name: "Node.js",
     description:
       "Server-side JavaScript for APIs, tooling, and full-stack application logic.",
@@ -138,6 +146,8 @@ export const skillCategories: SkillCategory[] = [
     icon: "🛠️",
     description:
       "Everyday tools and workflows that keep development efficient and collaborative.",
-    skills: ["Git & GitHub"].map((name) => skills.find((s) => s.name === name)!),
+    skills: ["Git & GitHub", "Linux"].map(
+      (name) => skills.find((s) => s.name === name)!
+    ),
   },
 ];

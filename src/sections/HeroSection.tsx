@@ -33,22 +33,22 @@ function SocialCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`glass-card-light flex aspect-square w-[150px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl p-4 text-center transition duration-300 ease-out hover:scale-105 hover:border-accent/40 sm:w-[180px] ${badgeClass}`}
+      className={`glass-card flex aspect-square w-[150px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl p-4 text-center transition duration-300 ease-out hover:scale-105 ${badgeClass}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: easeOut }}
     >
-{avatar ? (
+      {avatar ? (
         <span className="relative">
           <img
             src={avatar}
             alt={label}
             referrerPolicy="no-referrer"
-            className={`h-14 w-14 rounded-full border-2 border-white object-cover shadow-md ${iconBgClass}`}
+            className={`h-14 w-14 rounded-full border-2 border-white/20 object-cover shadow-md ${iconBgClass}`}
           />
           {icon ? (
             <span
-              className={`absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-white shadow ring-2 ring-white ${iconBgClass}`}
+              className={`absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-white shadow ring-2 ring-ink ${iconBgClass}`}
             >
               {icon}
             </span>
@@ -62,9 +62,9 @@ function SocialCard({
         </span>
       )}
       <div className="min-w-0 leading-tight">
-        <p className="truncate text-sm font-bold text-ink">{label}</p>
+        <p className="truncate text-sm font-bold text-white">{label}</p>
         <p className="truncate text-xs text-muted">{handle}</p>
-        <p className="text-[11px] font-semibold text-[#0A66C2]">{cta}</p>
+        <p className="text-[11px] font-semibold text-accent-glow">{cta}</p>
       </div>
     </motion.a>
   );
@@ -82,8 +82,8 @@ function SocialCards() {
         href={LINKEDIN_URL}
         label="Fardosa Abdirahman"
         handle="full-stack developer"
-        iconBgClass="bg-[#0A66C2]"
-        badgeClass="hover:border-[#0A66C2]/50"
+        iconBgClass="bg-gradient-to-br from-accent to-accent-blue"
+        badgeClass="hover:border-accent/50"
         cta="View Profile"
         delay={0.6}
         icon={
@@ -92,12 +92,12 @@ function SocialCards() {
           </svg>
         }
       />
-<SocialCard
+      <SocialCard
         href={GITHUB_URL}
         label="Fardosa"
         handle="@Fardosa-abdirahman"
-        iconBgClass="bg-ink"
-        badgeClass="hover:border-ink/50"
+        iconBgClass="bg-ink-muted"
+        badgeClass="hover:border-accent-glow/50"
         cta="View Repos"
         delay={0.7}
         avatar="https://github.com/Fardosa-abdirahman.png"
@@ -111,6 +111,15 @@ function SocialCards() {
   );
 }
 
+function StatChip({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="glass-card flex flex-col items-center rounded-2xl px-5 py-3 text-center">
+      <span className="font-display text-xl font-bold text-gradient">{value}</span>
+      <span className="mt-0.5 text-xs text-muted">{label}</span>
+    </div>
+  );
+}
+
 export default function HeroSection() {
   return (
     <section
@@ -120,11 +129,15 @@ export default function HeroSection() {
       {/* Ambient glowing orbs */}
       <div
         aria-hidden
-        className="absolute left-[8%] top-[18%] h-72 w-72 rounded-full bg-accent opacity-15 blur-3xl"
+        className="absolute left-[5%] top-[15%] h-96 w-96 rounded-full bg-accent opacity-20 blur-3xl"
       />
       <div
         aria-hidden
-        className="absolute bottom-[12%] right-[6%] h-72 w-72 rounded-full bg-accent opacity-10 blur-3xl"
+        className="absolute right-[-5%] top-[30%] h-80 w-80 rounded-full bg-accent-blue opacity-20 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-[-10%] left-[35%] h-80 w-80 rounded-full bg-accent-cyan opacity-15 blur-3xl"
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-6 md:grid-cols-2 lg:gap-20">
@@ -136,22 +149,28 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: easeOut }}
         >
           {/* Intro eyebrow */}
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
+          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-gradient">
+            <span className="inline-block h-2 w-2 rounded-full bg-accent-glow shadow shadow-accent-glow/50" />
             Hi, I&apos;m Fardosa
           </p>
 
-          {/* Subtitle */}
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/60 md:text-lg">
-            Full-Stack Developer focused on performance, clean UI, and user
-            experience
-          </p>
           {/* Headline */}
-          <span className="mt-4 font-display text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-            I build with{" "}
-            <span className="text-accent">React &amp; TypeScript</span>
-          </span>
+          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Full-Stack
+            <br />
+            <span className="text-gradient">Developer</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 md:text-lg">
+            I build fast, accessible, and beautifully designed web
+            applications with{" "}
+            <span className="font-semibold text-white">React &amp; TypeScript</span>,
+            from polished UI to reliable backend logic.
+          </p>
+
           {/* Buttons */}
-          <div className="mt-6 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
+          <div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
             <Button
               href="#projects"
               variant="primary"
@@ -162,13 +181,25 @@ export default function HeroSection() {
             <a
               href="/cv.pdf"
               download="Fardosa_Resume.pdf"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition duration-300 ease-out hover:scale-105 hover:border-accent hover:text-accent sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur transition duration-300 ease-out hover:scale-105 hover:border-accent hover:text-accent-glow sm:w-auto"
             >
               📄 Download Resume
             </a>
           </div>
 
-{/* Social profile cards */}
+          {/* Stat chips */}
+          <motion.div
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: easeOut }}
+          >
+            <StatChip value="6+" label="Projects" />
+            <StatChip value="5" label="Core Tech" />
+            <StatChip value="100%" label="Dedication" />
+          </motion.div>
+
+          {/* Social profile cards */}
           <SocialCards />
         </motion.div>
 
@@ -179,19 +210,27 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.15, duration: 0.8, ease: easeOut }}
         >
-          {/* Blurred glowing background behind the profile image */}
+          {/* Blurred glowing gradient behind profile */}
           <div
             aria-hidden
-            className="absolute h-72 w-72 rounded-full bg-accent opacity-20 blur-3xl sm:h-80 sm:w-80"
+            className="absolute h-80 w-80 rounded-full bg-gradient-to-tr from-accent/50 via-accent-blue/40 to-accent-cyan/40 opacity-30 blur-3xl sm:h-96 sm:w-96"
           />
 
-          {/* Decorative ring */}
+          {/* Rotating gradient ring */}
           <div
             aria-hidden
-            className="absolute h-[min(80vw,400px)] w-[min(80vw,400px)] rounded-full border border-accent/25 sm:h-[440px] sm:w-[440px]"
+            className="absolute h-[min(84vw,420px)] w-[min(84vw,420px)] rounded-full p-[3px] animate-rotate-slow"
+          >
+            <div className="hero-gradient-orb h-full w-full rounded-full" />
+          </div>
+
+          {/* Outer decorative ring */}
+          <div
+            aria-hidden
+            className="absolute h-[min(80vw,400px)] w-[min(80vw,400px)] rounded-full border border-white/10 sm:h-[440px] sm:w-[440px]"
           />
 
-{/* Perfectly circular profile image */}
+          {/* Perfectly circular profile image */}
           <div className="relative z-10 -mt-10 h-64 w-64 overflow-hidden rounded-full shadow-2xl shadow-accent/30 ring-4 ring-white/10 transition duration-300 ease-out hover:scale-105 sm:h-72 sm:w-72 md:-mt-14 md:h-80 md:w-80">
             <img
               src="/images/my image.jpg"
@@ -204,4 +243,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
