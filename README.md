@@ -1,74 +1,73 @@
-# React + TypeScript + Vite
+# Fardosa — Frontend Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio frontend built with Vite, React, and TypeScript. It showcases projects, skills, and contact information with responsive layouts, Tailwind CSS styling, and subtle Framer Motion animations.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Vite
+- React 19 + TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Router
 
-## React Compiler
+## Quick start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Prerequisites: Node.js (LTS) and npm.
 
-## Expanding the ESLint configuration
+Install dependencies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start dev server with HMR:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
-# my-frontend-portfolio
+
+Build for production (note: `tsc -b` runs as part of the build):
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+Other useful scripts:
+
+- `npm run lint` — run ESLint
+- `npm run test` — run unit tests (Vitest)
+
+## Project structure
+
+- `src/` — application source
+  - `components/`, `layout/`, `sections/`, `ui/`, `data/`, `pages/`
+- `public/` — static assets
+- `index.html`, `vite.config.ts`, `tsconfig.*.json`
+
+See the source in `src/` for components like `Navbar`, `Footer`, `ProjectCard`, and `SkillCard`.
+
+## Contributing
+
+Feel free to open issues or submit PRs. For local changes, run the dev server and ensure linting and tests pass before submitting.
+
+## Notes
+
+- The build script runs `tsc -b` followed by `vite build` (see `package.json`).
+- The project is configured with Tailwind CSS and includes Framer Motion for UI transitions.
+
+---
+
+If you want, I can also:
+
+- Add a short development checklist (pre-commit hooks, formatters)
+- Create a `LICENSE` file
+- Add deploy instructions (Netlify / Vercel / GitHub Pages)
+
+Updated README for this workspace.
+```
