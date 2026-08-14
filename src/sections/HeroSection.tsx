@@ -111,15 +111,6 @@ function SocialCards() {
   );
 }
 
-function StatChip({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="glass-card flex flex-col items-center rounded-2xl px-5 py-3 text-center">
-      <span className="font-display text-xl font-bold text-gradient">{value}</span>
-      <span className="mt-0.5 text-xs text-muted">{label}</span>
-    </div>
-  );
-}
-
 export default function HeroSection() {
   return (
     <section
@@ -187,19 +178,7 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Stat chips */}
-          <motion.div
-            className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5, ease: easeOut }}
-          >
-            <StatChip value="6+" label="Projects" />
-            <StatChip value="5" label="Core Tech" />
-            <StatChip value="100%" label="Dedication" />
-          </motion.div>
-
-          {/* Social profile cards */}
+{/* Social profile cards */}
           <SocialCards />
         </motion.div>
 

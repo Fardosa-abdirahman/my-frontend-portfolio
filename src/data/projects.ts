@@ -31,7 +31,7 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80",
     githubUrl: "https://github.com/Fardosa-abdirahman/Visa-App-Project",
   },
-  {
+{
     id: "my-frontend-portfolio",
     name: "Frontend Portfolio",
     description:
@@ -41,25 +41,5 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     liveUrl: "/",
     githubUrl: "https://github.com/Fardosa-abdirahman/my-frontend-portfolio",
-  },
-  {
-    id: "typescript-projects",
-    name: "TypeScript Projects",
-    description:
-      "A collection of TypeScript practice projects exploring types, interfaces, and modern JS patterns.",
-    stack: ["TypeScript"],
-    image:
-      "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80",
-    githubUrl: "https://github.com/Fardosa-abdirahman/TypeScript-Projects",
-  },
-  {
-    id: "mysql-projects",
-    name: "MySQL Projects",
-    description:
-      "Database practice work covering schema design, queries, and structured data management with MySQL.",
-    stack: ["MySQL", "SQL"],
-    image:
-      "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
-    githubUrl: "https://github.com/Fardosa-abdirahman/MySql_Projects",
   },
 ];
