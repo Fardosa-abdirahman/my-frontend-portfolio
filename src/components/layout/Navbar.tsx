@@ -94,7 +94,7 @@ export default function Navbar() {
 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-blue text-sm font-bold text-white">
             F
           </span>
-          <span className="font-display text-base font-bold tracking-wide text-white">
+          <span className="hidden sm:inline-block font-display text-base font-bold tracking-wide text-white">
             FARDOSA
           </span>
         </button>

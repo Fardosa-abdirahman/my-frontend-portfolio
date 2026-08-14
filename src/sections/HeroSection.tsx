@@ -33,7 +33,7 @@ function SocialCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`glass-card flex aspect-square w-[150px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl p-4 text-center transition duration-300 ease-out hover:scale-105 ${badgeClass}`}
+          className={`glass-card flex aspect-square w-[120px] sm:w-[150px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl p-4 text-center transition duration-300 ease-out hover:scale-105 ${badgeClass}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: easeOut }}
@@ -44,7 +44,7 @@ function SocialCard({
             src={avatar}
             alt={label}
             referrerPolicy="no-referrer"
-            className={`h-14 w-14 rounded-full border-2 border-white/20 object-cover shadow-md ${iconBgClass}`}
+                className={`h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-white/20 object-cover shadow-md ${iconBgClass}`}
           />
           {icon ? (
             <span
