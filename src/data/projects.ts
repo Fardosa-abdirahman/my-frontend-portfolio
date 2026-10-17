@@ -42,4 +42,14 @@ export const projects: Project[] = [
     liveUrl: "/",
     githubUrl: "https://github.com/Fardosa-abdirahman/my-frontend-portfolio",
   },
+  {
+    id: "habibotech-institute",
+    name: "Habibotech Institute",
+    description:
+      "A modern, responsive landing page for a technology training institute in Nairobi, Kenya — built as a school project to showcase courses, features, and an inquiry form.",
+    stack: ["HTML5", "CSS3", "Vanilla JavaScript", "Google Fonts", "Unsplash"],
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    githubUrl: "https://github.com/Fardosa-abdirahman/tech-school",
+  },
 ];

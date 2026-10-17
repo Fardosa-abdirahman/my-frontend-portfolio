@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CV_URL } from "../data/navigation";
 import Button from "../components/ui/Button";
 import { easeOut } from "../lib/motion";
 
@@ -131,7 +132,7 @@ export default function HeroSection() {
         className="absolute bottom-[-10%] left-[35%] h-80 w-80 rounded-full bg-accent-cyan opacity-15 blur-3xl"
       />
 
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-6 md:grid-cols-2 lg:gap-20">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 md:gap-14 lg:gap-20">
         {/* ===================== Text column ===================== */}
         <motion.div
           className="flex flex-col items-center text-center md:items-start md:text-left"
@@ -140,7 +141,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: easeOut }}
         >
           {/* Intro eyebrow */}
-          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-gradient">
+          <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gradient sm:text-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-accent-glow shadow shadow-accent-glow/50" />
             Hi, I&apos;m Fardosa
           </p>
@@ -153,7 +154,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 md:text-lg">
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base md:text-lg">
             I build fast, accessible, and beautifully designed web
             applications with{" "}
             <span className="font-semibold text-white">React &amp; TypeScript</span>,
@@ -170,21 +171,22 @@ export default function HeroSection() {
               🚀 View My Work
             </Button>
             <a
-              href="/cv.pdf"
-              download="Fardosa_Resume.pdf"
+              href={CV_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur transition duration-300 ease-out hover:scale-105 hover:border-accent hover:text-accent-glow sm:w-auto"
             >
-              📄 Download Resume
+              📄 View Resume
             </a>
           </div>
 
-{/* Social profile cards */}
+          {/* Social profile cards */}
           <SocialCards />
         </motion.div>
 
         {/* ===================== Image column ===================== */}
         <motion.div
-          className="relative flex items-center justify-center"
+          className="relative mt-2 flex items-center justify-center md:mt-0"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.15, duration: 0.8, ease: easeOut }}
@@ -192,13 +194,13 @@ export default function HeroSection() {
           {/* Blurred glowing gradient behind profile */}
           <div
             aria-hidden
-            className="absolute h-80 w-80 rounded-full bg-gradient-to-tr from-accent/50 via-accent-blue/40 to-accent-cyan/40 opacity-30 blur-3xl sm:h-96 sm:w-96"
+            className="absolute h-60 w-60 rounded-full bg-gradient-to-tr from-accent/50 via-accent-blue/40 to-accent-cyan/40 opacity-30 blur-3xl sm:h-72 sm:w-72 md:h-80 md:w-80"
           />
 
           {/* Rotating gradient ring */}
           <div
             aria-hidden
-            className="absolute h-[min(84vw,420px)] w-[min(84vw,420px)] rounded-full p-[3px] animate-rotate-slow"
+            className="absolute h-[min(68vw,280px)] w-[min(68vw,280px)] rounded-full p-[3px] animate-rotate-slow sm:h-[min(60vw,340px)] sm:w-[min(60vw,340px)] md:h-[min(84vw,420px)] md:w-[min(84vw,420px)]"
           >
             <div className="hero-gradient-orb h-full w-full rounded-full" />
           </div>
@@ -206,11 +208,11 @@ export default function HeroSection() {
           {/* Outer decorative ring */}
           <div
             aria-hidden
-            className="absolute h-[min(80vw,400px)] w-[min(80vw,400px)] rounded-full border border-white/10 sm:h-[440px] sm:w-[440px]"
+            className="absolute h-[min(62vw,240px)] w-[min(62vw,240px)] rounded-full border border-white/10 sm:h-[min(56vw,310px)] sm:w-[min(56vw,310px)] md:h-[min(80vw,400px)] md:w-[min(80vw,400px)]"
           />
 
           {/* Perfectly circular profile image */}
-          <div className="relative z-10 -mt-10 h-64 w-64 overflow-hidden rounded-full shadow-2xl shadow-accent/30 ring-4 ring-white/10 transition duration-300 ease-out hover:scale-105 sm:h-72 sm:w-72 md:-mt-14 md:h-80 md:w-80">
+          <div className="relative z-10 h-52 w-52 overflow-hidden rounded-full shadow-2xl shadow-accent/30 ring-4 ring-white/10 transition duration-300 ease-out hover:scale-105 sm:h-64 sm:w-64 md:-mt-14 md:h-80 md:w-80">
             <img
               src="/images/my image.jpg"
               alt="Fardosa"
