@@ -18,13 +18,14 @@ export default function Button({
   variant = "primary",
   external = false,
   className = "",
-  accentGradient: _accentGradient,
+  accentGradient,
   onClick,
   type = "button",
 }: ButtonProps) {
   const classes = cn(
     "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-out",
     variants[variant],
+    accentGradient,
     className
   );
 

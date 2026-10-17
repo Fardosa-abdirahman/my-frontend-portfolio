@@ -52,6 +52,6 @@ export const cardAccents = [
   },
 ] as const;
 
-export function getCardAccent(_index: number) {
-  return cardAccents[0];
+export function getCardAccent(index: number) {
+  return cardAccents[index % cardAccents.length];
 }

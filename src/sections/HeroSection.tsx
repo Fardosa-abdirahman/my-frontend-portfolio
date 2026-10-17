@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { CV_URL } from "../data/navigation";
 import Button from "../components/ui/Button";
@@ -13,7 +14,7 @@ type SocialCardProps = {
   badgeClass: string;
   iconBgClass: string;
   cta: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   avatar?: string;
   delay: number;
 };
